@@ -1,17 +1,32 @@
 import axios from "axios"
 
 export const lyricsService = {
-  getLyricsBySongTitle,
+  fetchLyrics,
 }
 
-const API_URL = "https://api.lyrics.ovh/v1"
+export interface LyricsResponse {
+  lyrics: string
+}
 
-async function getLyricsBySongTitle(title: string) {
-  const reqUrl = `${API_URL}/${title}`
+const LYRICS_API_BASE_URL = "https://api.lyrics.ovh/v1"
+
+async function fetchLyrics(
+  artist: string,
+  title: string
+): Promise<LyricsResponse> {
+  console.log("artist,title", artist, title)
   try {
-    const res = axios.get(reqUrl)
-    console.log("res", res)
-  } catch (err) {
-    console.error(err)
+    console.log(
+      "`${LYRICS_API_BASE_URL}/${artist}/${title}`",
+      `${LYRICS_API_BASE_URL}/${artist}/${title}`
+    )
+    const response = await axios.get<LyricsResponse>(
+      `${LYRICS_API_BASE_URL}/${artist}/${title}`
+    )
+    console.log("response", response)
+    return response.data
+  } catch (error) {
+    console.error("Error fetching lyrics:", error)
+    throw new Error("Failed to fetch lyrics")
   }
 }

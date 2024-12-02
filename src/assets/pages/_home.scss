@@ -1,9 +1,29 @@
 @use "../base/vars" as vars;
 
+::-webkit-scrollbar {
+  display: none;
+}
+
 .home-container {
   grid-column: 2;
   height: calc(100vh - 50px);
   background-color: vars.$bgc-001;
   width: 100%;
-  display: flex;
+  display: grid;
+  overflow: auto;
+  div {
+    width: 100%;
+    display: flex;
+    margin-block-start: 10px;
+  }
+  article {
+    padding-inline: 50px;
+    overflow: auto;
+    font-size: 1.5rem;
+    max-height: 500px;
+  }
+  p {
+    grid-column: 2;
+    max-height: calc(90vh - 50px);
+  }
 }
