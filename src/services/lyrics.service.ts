@@ -16,10 +16,6 @@ async function fetchLyrics(
 ): Promise<LyricsResponse> {
   console.log("artist,title", artist, title)
   try {
-    console.log(
-      "`${LYRICS_API_BASE_URL}/${artist}/${title}`",
-      `${LYRICS_API_BASE_URL}/${artist}/${title}`
-    )
     const response = await axios.get<LyricsResponse>(
       `${LYRICS_API_BASE_URL}/${artist}/${title}`
     )

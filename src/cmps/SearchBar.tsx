@@ -44,11 +44,12 @@ export default function SearchBar() {
           onChange={(ev) => setTitle(ev.target.value)}
         />
       </div>
-      {lyrics && (
+      <>
         <article>
-          <p>{lyrics}</p>
+          <p>{lyrics || "No lyrics yet... enter both fields"}</p>
         </article>
-      )}
+        <button>Add to favorites</button>
+      </>
     </>
   )
 }

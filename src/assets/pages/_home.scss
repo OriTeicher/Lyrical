@@ -11,6 +11,7 @@
   width: 100%;
   display: grid;
   overflow: auto;
+  grid-template-rows: 2fr 9fr 2fr;
   div {
     width: 100%;
     display: flex;
@@ -20,10 +21,22 @@
     padding-inline: 50px;
     overflow: auto;
     font-size: 1.5rem;
-    max-height: 500px;
+    height: 100%;
   }
   p {
+    text-align: justify;
     grid-column: 2;
-    max-height: calc(90vh - 50px);
+  }
+  button {
+    width: fit-content;
+    font-size: 30px;
+    margin: auto;
+    border-radius: 10px;
+    padding-inline: 20px;
+    border: none;
+    cursor: pointer;
+    &:hover {
+      filter: brightness(90%);
+    }
   }
 }
