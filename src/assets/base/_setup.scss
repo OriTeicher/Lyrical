@@ -1,0 +1,29 @@
+@use "./vars" as vars;
+@import url("https://fonts.googleapis.com/css2?family=Parkinsans:wght@300..800&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #292929;
+}
+
+body {
+  font-family: vars.$font-family-001;
+  color: vars.$color-001;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  all: unset;
+  cursor: pointer;
+  &:hover {
+    color: vars.$color-002;
+  }
+}

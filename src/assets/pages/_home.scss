@@ -1,0 +1,9 @@
+@use "../base/vars" as vars;
+
+.home-container {
+  grid-column: 2;
+  height: calc(100vh - 50px);
+  background-color: vars.$bgc-001;
+  width: 100%;
+  display: flex;
+}

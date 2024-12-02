@@ -1,0 +1,28 @@
+@use "../base/vars" as vars;
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+}
+
+nav {
+  grid-column: 1/-1;
+  @include flex-center;
+  justify-content: space-between;
+  padding-inline: 10px;
+  background-color: vars.$bgc-002;
+  font-size: 1.5rem;
+  height: 50px;
+  h1 {
+    color: vars.$color-002;
+    text-shadow: 1px 1px 1px rgb(0, 0, 0);
+  }
+  .pages-list {
+    display: flex;
+    gap: 1em;
+  }
+}
+
+.selected {
+  color: vars.$color-002;
+}

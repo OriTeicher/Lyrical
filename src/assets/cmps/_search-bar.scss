@@ -1,0 +1,15 @@
+@use "../base/vars" as vars;
+
+.main-input {
+  font-size: 2em;
+  padding: 10px 0px;
+  border-radius: 10px;
+  text-align: center;
+  border: none;
+  margin: auto;
+
+  &:focus {
+    outline: 1px solid vars.$color-002;
+    color: vars.$color-002;
+  }
+}
