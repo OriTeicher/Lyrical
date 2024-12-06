@@ -6,14 +6,16 @@
 }
 
 nav {
-  grid-column: 1/-1;
+  grid-column: 2;
   @include flex-center;
   justify-content: space-between;
-  padding-inline: 10px;
+  padding-inline: 15px;
   background-color: vars.$bgc-002;
   font-size: 1.5rem;
   height: 50px;
   h1 {
+    font-family: "Playwrite CA", cursive;
+    font-size: 1.5rem;
     color: vars.$color-002;
     text-shadow: 1px 1px 1px rgb(0, 0, 0);
   }
@@ -24,5 +26,9 @@ nav {
 }
 
 .selected {
+  border-bottom: 2px solid vars.$color-002;
   color: vars.$color-002;
+}
+
+@media (max-width: 1000px) {
 }

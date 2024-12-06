@@ -1,5 +1,6 @@
 @use "./vars" as vars;
 @import url("https://fonts.googleapis.com/css2?family=Parkinsans:wght@300..800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Condiment&family=Parkinsans:wght@300..800&family=Playwrite+CA:wght@100..400&display=swap");
 
 * {
   padding: 0;
@@ -29,5 +30,9 @@ a {
 }
 
 button {
+  font-family: vars.$font-family-001;
+}
+
+::placeholder {
   font-family: vars.$font-family-001;
 }

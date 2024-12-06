@@ -1,16 +1,20 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
-import Home from "./pages/Home"
+import SongSearchPage from "./pages/SongsSearchPage"
 import AppHeader from "./cmps/AppHeader"
+import Home from "./pages/HomePage"
 
 function App() {
   return (
     <section className="app-container">
       <BrowserRouter>
         <AppHeader />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="*" element={<Home />} />
-        </Routes>
+        <section className="home-container">
+          <Routes>
+            <Route path="/" element={<SongSearchPage />} />
+            <Route path="/songs" element={<SongSearchPage />} />
+            <Route path="*" element={<Home />} />
+          </Routes>
+        </section>
       </BrowserRouter>
     </section>
   )

@@ -1,4 +1,13 @@
+@use "./vars" as vars;
+
 .app-container {
   display: grid;
   grid-template-columns: 130px 1fr 130px;
+  background: linear-gradient(rgba(128, 128, 128, 0.685), #333);
+}
+
+@media (max-width: 1000px) {
+  .app-container {
+    grid-template-columns: 1fr;
+  }
 }

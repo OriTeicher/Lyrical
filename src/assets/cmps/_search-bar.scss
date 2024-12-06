@@ -3,14 +3,29 @@
 .main-input {
   font-size: 2em;
   padding: 10px 0px;
-  border-radius: 10px;
+  border-radius: 5px;
   text-align: center;
   border: none;
   margin: auto;
-  background-color: vars.$bgc-002;
+  background-color: unset;
+  border-bottom: 3px solid vars.$bgc-002;
   color: white;
   &:focus {
-    outline: 1px solid vars.$color-002;
+    outline: none;
     color: vars.$color-002;
+  }
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  justify-content: baseline;
+}
+
+@media (max-width: 900px) {
+  .search-container {
+    gap: 10px;
+    margin-block-end: 10px;
+    flex-direction: column;
   }
 }

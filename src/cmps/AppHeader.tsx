@@ -2,8 +2,8 @@ import { useState } from "react"
 import { Link } from "react-router-dom"
 
 export default function AppHeader() {
-  const [pages] = useState<string[]>(["Home", "About", "Songs", "Favorites"])
-  const [selectedPage, setSelectedPage] = useState<string>("Home") // Default to "Home"
+  const [pages] = useState<string[]>(["Home", "Create", "Songs", "Favorites"])
+  const [selectedPage, setSelectedPage] = useState<string>("Home")
 
   const handlePageClick = (page: string) => {
     setSelectedPage(page)
@@ -11,7 +11,7 @@ export default function AppHeader() {
 
   return (
     <nav>
-      <h1>LYRICAL</h1>
+      <h1>lyrical</h1>
       <ul className="pages-list">
         {pages.map((page) => (
           <li

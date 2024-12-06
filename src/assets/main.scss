@@ -1,5 +1,7 @@
 @use "./base/setup";
+@use "./base/helpers";
 @use "./base/layout";
 @use "./cmps/app-header";
-@use "./pages/home";
+@use "./pages/searchpage";
+@use "./pages/homepage.scss";
 @use "./cmps/search-bar.scss";

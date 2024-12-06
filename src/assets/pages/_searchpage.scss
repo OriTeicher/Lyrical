@@ -1,0 +1,75 @@
+@use "../base/vars" as vars;
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.home-container {
+  grid-column: 2;
+  height: calc(100vh - 50px);
+  background-color: vars.$bgc-001;
+  width: 100%;
+  display: grid;
+  overflow: auto;
+  grid-template-rows: 2fr 9fr 2fr;
+
+  article {
+    padding-inline: 50px;
+    overflow: auto;
+    font-size: 1.5rem;
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+  p {
+    margin: auto;
+    text-align: justify;
+    width: fit-content;
+    grid-column: 2;
+    padding: 15px 20px;
+    border-radius: 10px;
+    background-color: vars.$bgc-002;
+    min-height: 100%;
+    min-width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  button {
+    width: fit-content;
+    font-size: 30px;
+    margin: auto;
+    border-radius: 5px;
+    padding-inline: 10px;
+    border: none;
+    cursor: pointer;
+    transition: scale 0.1s;
+    &:hover {
+      scale: 1.05;
+      filter: brightness(90%);
+    }
+  }
+}
+
+@media (max-width: 1000px) {
+  .home-container {
+    grid-template-rows: 1fr 10fr 1fr;
+    .search-container {
+      input {
+        width: 100%;
+      }
+    }
+    article {
+      padding-inline: 0px;
+      overflow: auto;
+      font-size: 1.2rem;
+      height: 100%;
+      p {
+        border-radius: 0;
+        margin-block-end: 10px;
+        height: 100%;
+      }
+    }
+  }
+}
