@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import useDebounce from "../custom-hooks/useDebounce"
-import { lyricsService } from "../services/lyrics.service"
+import { lyricsService, SavedSong } from "../services/lyrics.service"
 import { ScaleLoader } from "react-spinners"
 import SaveLyricsModal from "../cmps/SaveLyricsModal"
 
@@ -29,6 +29,11 @@ export default function SongSearchPage() {
         setLoading(false)
       }
     }
+  }
+
+  async function handleSaveLyrics(songToSave: SavedSong) {
+    songToSave.lyrics = lyrics
+    await lyricsService.saveLyricsToFavorites(songToSave)
   }
 
   useEffect(() => {
@@ -78,6 +83,7 @@ export default function SongSearchPage() {
         title={title}
         artist={artist}
         onClose={() => setIsModalOpen(false)}
+        onSaveLyrics={handleSaveLyrics}
       />
     </>
   )

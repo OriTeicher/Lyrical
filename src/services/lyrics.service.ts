@@ -1,7 +1,9 @@
 import axios from "axios"
+import { utilService } from "./util.service"
 
 export const lyricsService = {
   fetchLyrics,
+  saveLyricsToFavorites,
 }
 
 export interface LyricsResponse {
@@ -9,14 +11,14 @@ export interface LyricsResponse {
 }
 
 export interface SavedSong {
-  _id: string
+  _id?: string
   title: string
   artist: string | string[]
   lyrics: string
 }
 
 const LYRICS_API_BASE_URL = "https://api.lyrics.ovh/v1"
-
+const LYRICS_DB = "favoritesDB"
 async function fetchLyrics(
   artist: string,
   title: string
@@ -33,9 +35,18 @@ async function fetchLyrics(
   }
 }
 
-async function saveLyricsToFavorites() {
+async function saveLyricsToFavorites(songToSave: SavedSong): Promise<void> {
   try {
+    await new Promise((resolve) => setTimeout(resolve, 2000))
+
+    if (songToSave._id) throw new Error("song already exists")
+    songToSave._id = utilService.makeId()
+    const savedSongs = JSON.parse(localStorage.getItem(LYRICS_DB) || "[]")
+    const updatedSongs = [...savedSongs, songToSave]
+    localStorage.setItem(LYRICS_DB, JSON.stringify(updatedSongs))
+
+    console.log("Song saved successfully:", songToSave)
   } catch (err) {
-    console.log("ERROR:", err)
+    console.error("Error saving song:", err)
   }
 }

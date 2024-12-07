@@ -33,6 +33,8 @@ button {
   font-family: vars.$font-family-001;
 }
 
-::placeholder {
+::placeholder,
+button,
+input {
   font-family: vars.$font-family-001;
 }
