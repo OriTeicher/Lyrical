@@ -2,12 +2,14 @@ import { useState, useEffect } from "react"
 import useDebounce from "../custom-hooks/useDebounce"
 import { lyricsService } from "../services/lyrics.service"
 import { ScaleLoader } from "react-spinners"
+import SaveLyricsModal from "../cmps/SaveLyricsModal"
 
 export default function SongSearchPage() {
   const [title, setTitle] = useState("")
   const [artist, setArtist] = useState("")
   const [lyrics, setLyrics] = useState("")
   const [loading, setLoading] = useState(false)
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
   const debouncedTitle = useDebounce(title, 1500)
   const debouncedArtist = useDebounce(artist, 1500)
@@ -23,7 +25,6 @@ export default function SongSearchPage() {
         setLyrics(fetchedLyrics.lyrics)
       } catch (error) {
         console.error("Error fetching lyrics:", error)
-        setLyrics("Could not fetch lyrics. Please try again.")
       } finally {
         setLoading(false)
       }
@@ -57,13 +58,27 @@ export default function SongSearchPage() {
         />
       </div>
       <article className="flex-col justify-center">
-        {loading ? (
+        {loading && (title || artist) ? (
           <ScaleLoader color="white" width={20} height={100} />
         ) : (
-          <p>{lyrics || <h2>Search real lyrics to get inspired!</h2>}</p>
+          <p>
+            {lyrics || (
+              <h2 className="flex justify-center align-center">
+                Search real lyrics to get inspired!
+              </h2>
+            )}
+          </p>
         )}
       </article>
-      <button>Add to favorites</button>
+      <button onClick={() => (lyrics ? setIsModalOpen(true) : null)}>
+        Add to favorites
+      </button>
+      <SaveLyricsModal
+        isModalOpen={isModalOpen}
+        title={title}
+        artist={artist}
+        onClose={() => setIsModalOpen(false)}
+      />
     </>
   )
 }

@@ -3,16 +3,16 @@
 .main-input {
   font-size: 2em;
   padding: 10px 0px;
-  border-radius: 5px;
   text-align: center;
   border: none;
   margin: auto;
   background-color: unset;
-  border-bottom: 3px solid vars.$bgc-002;
+  border-bottom: 2px solid vars.$bgc-002;
   color: white;
   &:focus {
     outline: none;
     color: vars.$color-002;
+    border-bottom: 2px solid vars.$color-002;
   }
 }
 

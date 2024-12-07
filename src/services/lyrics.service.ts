@@ -8,6 +8,13 @@ export interface LyricsResponse {
   lyrics: string
 }
 
+export interface SavedSong {
+  _id: string
+  title: string
+  artist: string | string[]
+  lyrics: string
+}
+
 const LYRICS_API_BASE_URL = "https://api.lyrics.ovh/v1"
 
 async function fetchLyrics(
@@ -23,5 +30,12 @@ async function fetchLyrics(
   } catch (error) {
     console.error("Error fetching lyrics:", error)
     throw new Error("Failed to fetch lyrics")
+  }
+}
+
+async function saveLyricsToFavorites() {
+  try {
+  } catch (err) {
+    console.log("ERROR:", err)
   }
 }

@@ -1,0 +1,59 @@
+@use "../base/vars" as vars;
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(1px);
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+
+  z-index: 1;
+}
+
+dialog {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+  margin: auto;
+  height: 40%;
+  border-radius: 20px;
+  padding: 0px 20px;
+  form {
+    display: flex;
+    gap: 20px;
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-evenly;
+    z-index: 10;
+    h2 {
+      text-align: center;
+    }
+    .input-container {
+      display: grid;
+      grid-template-columns: 3fr 9fr;
+      gap: 10px;
+    }
+    :nth-child(n) {
+      width: 100%;
+    }
+    input {
+      border: unset;
+      font-size: 1em;
+      font-family: vars.$font-family-001;
+      border-bottom: 1px solid black;
+      &:focus {
+        outline: none;
+      }
+    }
+    .btns-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+  }
+}
