@@ -12,7 +12,7 @@ function App() {
         <section className="home-container">
           <Routes>
             <Route path="/" element={<SongSearchPage />} />
-            <Route path="/songs" element={<SongSearchPage />} />
+            <Route path="/lyrics" element={<SongSearchPage />} />
             <Route path="/favorites" element={<FavoritesPage />} />
             <Route path="*" element={<Home />} />
           </Routes>

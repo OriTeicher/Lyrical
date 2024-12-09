@@ -52,6 +52,7 @@
 
 @media (max-width: 1000px) {
   .home-container {
+    width: 100%;
     grid-template-rows: 1fr 10fr 1fr;
     .search-container {
       input {

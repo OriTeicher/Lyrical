@@ -1,9 +1,11 @@
 import axios from "axios"
 import { utilService } from "./util.service"
-
+import { storageService } from "./async-storage.service"
 export const lyricsService = {
   fetchLyrics,
   saveLyricsToFavorites,
+  getFavoriteSongs,
+  removeLyricsFromFavs,
 }
 
 export interface LyricsResponse {
@@ -27,7 +29,6 @@ async function fetchLyrics(
     const response = await axios.get<LyricsResponse>(
       `${LYRICS_API_BASE_URL}/${artist}/${title}`
     )
-    console.log("response", response)
     return response.data
   } catch (error) {
     console.error("Error fetching lyrics:", error)
@@ -37,16 +38,26 @@ async function fetchLyrics(
 
 async function saveLyricsToFavorites(songToSave: SavedSong): Promise<void> {
   try {
-    await new Promise((resolve) => setTimeout(resolve, 2000))
-
-    if (songToSave._id) throw new Error("song already exists")
-    songToSave._id = utilService.makeId()
-    const savedSongs = JSON.parse(localStorage.getItem(LYRICS_DB) || "[]")
-    const updatedSongs = [...savedSongs, songToSave]
-    localStorage.setItem(LYRICS_DB, JSON.stringify(updatedSongs))
-
-    console.log("Song saved successfully:", songToSave)
+    await storageService.post(LYRICS_DB, songToSave)
   } catch (err) {
     console.error("Error saving song:", err)
+  }
+}
+
+async function getFavoriteSongs(): Promise<SavedSong[] | null | undefined> {
+  try {
+    return await storageService.query(LYRICS_DB)
+  } catch (err) {
+    console.error(err)
+  }
+}
+async function removeLyricsFromFavs(
+  songToRemoveId: string | undefined
+): Promise<void> {
+  try {
+    if (!songToRemoveId) return
+    await storageService.remove(LYRICS_DB, songToRemoveId)
+  } catch (err) {
+    console.error(err)
   }
 }
